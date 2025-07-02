@@ -1,0 +1,19 @@
+identity:
+  author: "aimark"
+  name: "custom-image-tools"
+  label:
+    en_US: "custom-image-tools"
+    zh_Hans: "custom-image-tools"
+    pt_BR: "custom-image-tools"
+  description:
+    en_US: "自定义图像工具"
+    zh_Hans: "自定义图像工具"
+    pt_BR: "自定义图像工具"
+  icon: "icon.svg"
+tools:
+  - tools/custom-image-tools.yaml
+  - tools/prompt_to_image.yaml
+  - tools/image_to_image.yaml
+extra:
+  python:
+    source: provider/custom-image-tools.py

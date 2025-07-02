@@ -1,0 +1,30 @@
+identity:
+  name: "prompt_to_image"
+  author: "aimark"
+  label:
+    en_US: "seedream_text_to_image"
+    zh_Hans: "seedream文生图"
+    pt_BR: "custom-image-tools"
+description:
+  human:
+    en_US: "文生图"
+    zh_Hans: "文生图"
+    pt_BR: "自定义图像工具"
+  llm: "seedream(即梦)图像生成是一个文本到图像生成工具, 支持生成中文文字, 使用双引号包裹要生成的文字"
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: image generation prompt
+      zh_Hans: 图像生成prompt
+      pt_BR: Query string
+    human_description:
+      en_US: "自定义图像工具"
+      zh_Hans: "自定义图像工具"
+      pt_BR: "自定义图像工具"
+    llm_description: "自定义图像工具"
+    form: llm
+extra:
+  python:
+    source: tools/prompt_to_image.py

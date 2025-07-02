@@ -1,0 +1,30 @@
+identity:
+  name: "custom-image-tools"
+  author: "aimark"
+  label:
+    en_US: "custom-image-tools"
+    zh_Hans: "custom-image-tools"
+    pt_BR: "custom-image-tools"
+description:
+  human:
+    en_US: "自定义图像工具"
+    zh_Hans: "自定义图像工具"
+    pt_BR: "自定义图像工具"
+  llm: "自定义图像工具"
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: Query string
+      zh_Hans: 查询语句
+      pt_BR: Query string
+    human_description:
+      en_US: "自定义图像工具"
+      zh_Hans: "自定义图像工具"
+      pt_BR: "自定义图像工具"
+    llm_description: "自定义图像工具"
+    form: llm
+extra:
+  python:
+    source: tools/custom-image-tools.py

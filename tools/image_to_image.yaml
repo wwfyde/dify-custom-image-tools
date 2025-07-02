@@ -1,0 +1,43 @@
+identity:
+  name: "image_to_image"
+  author: "aimark"
+  label:
+    en_US: "seedream_image_to_image"
+    zh_Hans: "seedream图生图"
+    pt_BR: "custom-image-tools"
+description:
+  human:
+    en_US: "图生图, 人像写真"
+    zh_Hans: "图生图, 人像写真"
+    pt_BR: "自定义图像工具"
+  llm: "Seedream(即梦)图生图工具, 支持人像写真, 用户传入图像时, 进行风格转换"
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: image generation prompt
+      zh_Hans: 图像生成prompt
+      pt_BR: Query string
+    human_description:
+      en_US: "自定义图像工具"
+      zh_Hans: "自定义图像工具"
+      pt_BR: "自定义图像工具"
+    llm_description: "自定义图像工具"
+    form: llm
+  - name: image
+    type: files
+    required: false
+    label:
+      en_US: image
+      zh_Hans: 图像
+      pt_BR: Query string
+    human_description:
+      en_US: "人像写真"
+      zh_Hans: "人像写真"
+      pt_BR: "自定义图像工具"
+    llm_description: "image to image, portrait"
+    form: llm
+extra:
+  python:
+    source: tools/image_to_image.py
