@@ -1,0 +1,43 @@
+identity:
+  name: "image_edit"
+  author: "aimark"
+  label:
+    en_US: "SeedEdit Image Edit"
+    zh_Hans: "SeedEdit图像编辑"
+    pt_BR: "custom-image-tools"
+description:
+  human:
+    en_US: "SeedEdit Image Edit"
+    zh_Hans: "SeedEdit图像编辑"
+    pt_BR: "自定义图像工具"
+  llm: "SeedEdit图像编辑, 根据用户传入的prompt和image进行编辑"
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    label:
+      en_US: image edit prompt
+      zh_Hans: 图像编辑Prompt
+      pt_BR: Query string
+    human_description:
+      en_US: "prompt, instructing the seededit to modify the image"
+      zh_Hans: "Prompt, 引导SeedEdit修改图像"
+      pt_BR: "自定义图像工具"
+    llm_description: "prompt, used for instructing the seededit to modify the image"
+    form: llm
+  - name: image
+    type: string
+    required: true
+    label:
+      en_US: image url
+      zh_Hans: 图像
+      pt_BR: Query string
+    human_description:
+      en_US: "image url"
+      zh_Hans: "image_url, 将被编辑的图片"
+      pt_BR: "自定义图像工具"
+    llm_description: "image url, the image to be edited"
+    form: llm
+extra:
+  python:
+    source: tools/image_edit.py
