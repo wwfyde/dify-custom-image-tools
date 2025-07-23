@@ -15,6 +15,7 @@ tools:
   - tools/prompt_to_image.yaml
   - tools/image_to_image.yaml
   - tools/image_edit.yaml
+  - tools/url_to_file.yaml
 extra:
   python:
     source: provider/custom-image-tools.py

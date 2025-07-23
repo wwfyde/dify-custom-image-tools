@@ -2,3 +2,4 @@ dify_plugin>=0.2.0,<0.3.0
 requests
 oss2
 python-dotenv
+pillow

@@ -1,0 +1,31 @@
+identity:
+  name: "url_to_file"
+  author: "aimark"
+  label:
+    en_US: "Url to File"
+    zh_Hans: "图像链接转文件"
+    pt_BR: "custom-image-tools"
+description:
+  human:
+    en_US: "Url to File"
+    zh_Hans: "Url转File"
+    pt_BR: "自定义图像工具"
+  llm: "url_to_file tool convert url link to File object that can be processing by dify"
+#  llm: "seedream(即梦)图像生成是一个文本到图像生成工具, 支持生成中文文字, 使用双引号包裹要生成的文字"
+parameters:
+  - name: image
+    type: string
+    required: true
+    label:
+      en_US: "Image Url"
+      zh_Hans: "图像Url"
+      pt_BR: Query string
+    human_description:
+      en_US: "文件链接"
+      zh_Hans: "自定义图像工具"
+      pt_BR: "自定义图像工具"
+    llm_description: "自定义图像工具"
+    form: llm
+extra:
+  python:
+    source: tools/url_to_file.py
