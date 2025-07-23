@@ -2,11 +2,13 @@ import base64
 import json
 import os
 from collections.abc import Generator
+from io import BytesIO
 from typing import Any
 from urllib.parse import urlencode
 from uuid import uuid4
 
 import requests
+from PIL import Image
 from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage
 from dotenv import find_dotenv
@@ -78,6 +80,7 @@ class Create_imageTool(Tool):
         data = response.json()
         images_base64 = data.get("data", {}).get("binary_data_base64", [])
         urls = []
+        images = []
         for image_base64 in images_base64:
             if not image_base64:
                 continue
@@ -85,13 +88,21 @@ class Create_imageTool(Tool):
             # Create an ImageArtifact from the decoded bytes
             image_bytes = base64.b64decode(image_base64)
             id = str(uuid4())
-            filename = f"{id}.png"
+            pil = Image.open(BytesIO(image_bytes))
+            img_format = pil.format.lower()
+            filename = f"{id}.{img_format}"
 
+            images.append((image_bytes, img_format))
             url = upload_image(filename, image_bytes, prefix="seedream")
             urls.append(url)
 
         url = urls[0] if len(urls) > 0 else ""
+        image_bytes, img_format = images[0] if len(images) >0 else None
 
         yield self.create_json_message({
             "url": url
         })
+
+        yield self.create_text_message(url)
+        metadata = {"mime_type": f"image/{img_format}"}
+        yield self.create_blob_message(image_bytes, meta=metadata)
