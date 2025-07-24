@@ -16,8 +16,8 @@ parameters:
     type: string
     required: true
     label:
-      en_US: image edit prompt
-      zh_Hans: 图像编辑Prompt
+      en_US: "image edit prompt"
+      zh_Hans: "图像编辑Prompt"
       pt_BR: Query string
     human_description:
       en_US: "prompt, instructing the seededit to modify the image"

@@ -45,7 +45,7 @@ class ImageToImageTool(Tool):
             "watermark": False,
         }
         try:
-            with (httpx.Client() as client):
+            with httpx.Client() as client:
                 response = client.post(
                     url, headers=headers, json=payload, timeout=60
                 )
@@ -55,18 +55,19 @@ class ImageToImageTool(Tool):
                 url = data.get("url", "https://ark-project.tos-cn-beijing.volces.com/doc_image/seedream_i2i.jpeg")
 
             # 上传图片
-            response = httpx.get(url)
+            response = httpx.get(url, timeout=60)
+
             content = response.content
             pil = Image.open(BytesIO(content))
-            img_format = pil.format.lower()
+            img_format = pil.format.lower() or "png"
             filename = f"{str(uuid4())}.{img_format}"
 
             image_url = upload_image(filename, data=content, prefix="seedream")
 
             yield self.create_text_message(image_url)
             yield self.create_json_message({"url": image_url})
-            yield self.create_image_message(image_url)
-            yield self.create_blob_message(content, meta={"mime_type": f"image/{img_format}"})
+            metadata = {"mime_type": f"image/{img_format}"}
+            yield self.create_blob_message(content, meta=metadata)
             return
         except Exception as e:
             yield self.create_text_message(f"工具调用失败, 错误提示: {e}")
